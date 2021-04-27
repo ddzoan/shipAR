@@ -4,12 +4,14 @@ AFRAME.registerComponent('peakfinder', {
     console.log('init peakfinder');
     this.loaded = false;
     window.addEventListener('gps-camera-update-position', e => {
-      console.log('gps-camera-update-position', e);
+      // console.log('gps-camera-update-position', e);
       if(this.loaded === false) {
         this._loadPeaks(e.detail.position.longitude, e.detail.position.latitude);
         this.loaded = true;
       }
     });
+    this.scene = document.getElementById('#scene');
+    this.scene.addEventListener("twofingermove", this.handleScale);
   },
   _loadPeaks: function(longitude, latitude) {
     const scale = 3000;
@@ -18,6 +20,7 @@ AFRAME.registerComponent('peakfinder', {
         const entity = document.createElement('a-text');
         entity.setAttribute('look-at', '[gps-projected-camera]');
         entity.setAttribute('value', peak.properties.name);
+        entity.setAttribute('color', "red");
         entity.setAttribute('scale', {
           x: scale,
           y: scale,
@@ -30,6 +33,21 @@ AFRAME.registerComponent('peakfinder', {
         console.log('entity is', entity, entity.getAttribute('gps-projected-entity-place'), entity.getAttribute('scale'), entity.getAttribute('look-at'));
         this.el.appendChild(entity);
       });
+  },
+  handleScale(event) {
+    console.log('trying to scale')
+    this.scaleFactor *=
+      1 + event.detail.spreadChange / event.detail.startSpread;
+
+    // this.scaleFactor = Math.min(
+    //   Math.max(this.scaleFactor, this.data.minScale),
+    //   this.data.maxScale
+    // );
+
+    // el.object3D.scale.x = scaleFactor * initialScale.x;
+    // el.object3D.scale.y = scaleFactor * initialScale.y;
+    // el.object3D.scale.z = scaleFactor * initialScale.z;
+    console.log("scaling of some sort", this.scaleFactor)
   },
   _peakList: {
     "features": [
