@@ -12,21 +12,10 @@
 </head>
 
 <body>
-<!-- <a style="position: absolute; z-index: 200; background: white;" onclick="toggleVid()">play video</a>
-<pre style="position: absolute; top: 1em; background: rgba(255,255,255,0.5); z-index: 201;" id="log"></pre> -->
 <a-scene vr-mode-ui="enabled: true" arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: true;'
+         gesture-detector
          renderer='antialias: true; alpha: true'>
     <a-camera gps-projected-camera rotation-reader maxDistance="100000" position="0 30 120"></a-camera>
-    <!-- original gps: latitude: 21.285995; longitude: -157.837453; -->
-    <!-- right outside the hobron condo window: 21.28576974419701,-157.8377203975755 -->
-
-    <!-- centered on mt rainier in washington state: -->
-    <!-- https://www.hikar.org/fm/ws/bsvr.php?bbox=-121.8603,46.7523,-121.6603,46.9523&outProj=4326&format=json&poi=natural -->
-    <a-sphere gps-projected-entity-place='latitude: 21.28476974419701; longitude: -157.8382203975755;'
-              material='color: red' scale='10 10 10' position='0 30 0'>
-    </a-sphere>
-    <a-text value="Hello Steven" look-at="[gps-projected-camera]" side="double" scale="50 50 50" position='30 0 0'
-            gps-projected-entity-place="latitude: 21.28476974419701; longitude: -157.8382203975755;"></a-text>
     <a-entity peakfinder></a-entity>
 </a-scene>
 </body>
