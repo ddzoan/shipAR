@@ -3,7 +3,8 @@ AFRAME.registerComponent('peakfinder', {
     this.loaded = false;
     window.addEventListener('gps-camera-update-position', e => {
       if(this.loaded === false) {
-        this._loadPeaks(e.detail.position.longitude, e.detail.position.latitude);
+        // this._loadPeaks(e.detail.position.longitude, e.detail.position.latitude);
+        this._loadPeaks("122.4194", "37.7749");
         this.loaded = true;
       }
     });
