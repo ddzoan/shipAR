@@ -36,6 +36,22 @@ AFRAME.registerComponent('peakfinder', {
       {
         "type": "Feature",
         "properties": {
+          "osm_id": "345xxxxxx",
+          "name": "Twin Peaks",
+          "natural": "peak",
+          "featuretype": "hill"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4474,
+            37.7529
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
           "osm_id": "346xxxxxx",
           "name": "Baby Peak",
           "natural": "peak",
