@@ -52,6 +52,22 @@ AFRAME.registerComponent('peakfinder', {
       {
         "type": "Feature",
         "properties": {
+          "osm_id": "344xxxxxx",
+          "name": "Mt. Davidson",
+          "natural": "peak",
+          "featuretype": "hill"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.4533,
+            37.7383
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
           "osm_id": "346xxxxxx",
           "name": "Baby Peak",
           "natural": "peak",
