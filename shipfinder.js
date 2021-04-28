@@ -188,27 +188,26 @@ AFRAME.registerComponent('shipfinder', {
 });
 
 const shipmentsText = (name) => {
-  console.log(shipList[name])
   return shipList[name].properties.flex_ids.join('\n')
 };
 
-function addDemoElements(pos, parentNode) {
-  const demoPos = {
-    latitude: pos.latitude - 0.00119,
-    longitude: pos.longitude - 0.0005
-  };
-
-
-  const entity = document.createElement('a-sphere');
-  entity.setAttribute('material', 'color: red');
-  entity.setAttribute('position', '0 30 0');
-  entity.setAttribute('scale', '10 10 10');
-  entity.setAttribute('gps-projected-entity-place', {
-    latitude: demoPos.latitude,
-    longitude: demoPos.longitude
-  });
+// function addDemoElements(pos, parentNode) {
+//   const demoPos = {
+//     latitude: pos.latitude - 0.00119,
+//     longitude: pos.longitude - 0.0005
+//   };
+//
+//
+//   const entity = document.createElement('a-sphere');
+//   entity.setAttribute('material', 'color: red');
+//   entity.setAttribute('position', '0 30 0');
+//   entity.setAttribute('scale', '10 10 10');
+//   entity.setAttribute('gps-projected-entity-place', {
+//     latitude: demoPos.latitude,
+//     longitude: demoPos.longitude
+//   });
   // console.log('sphere demo is', entity, entity.getAttribute('gps-projected-entity-place'), entity.getAttribute('scale'), entity.getAttribute('position'), entity.getAttribute('material'));
-  parentNode.appendChild(entity);
+  // parentNode.appendChild(entity);
 
 
   // console.log('text demo is', text, text.getAttribute('gps-projected-entity-place'), text.getAttribute('scale'), text.getAttribute('position'), text.getAttribute('material'));
@@ -219,20 +218,20 @@ function addDemoElements(pos, parentNode) {
     // </a-sphere>
     // <a-text value="Hello There" look-at="[gps-projected-camera]" side="double" scale="50 50 50" position='30 0 0'
     //   gps-projected-entity-place="latitude: 21.28476974419701; longitude: -157.8382203975755;"></a-text>
-}
+// }
 
 
-AFRAME.registerComponent('demo', {
-    init: function() {
-        // console.log('init demo');
-        this.loaded = false;
-        window.addEventListener('gps-camera-update-position', e => {
-          const pos = e.detail.position;
-          // console.log('gps-camera-update-position', e, 'latlong', pos.latitude, pos.longitude);
-          if(this.loaded === false) {
-              addDemoElements(pos, this.el);
-              this.loaded = true;
-          }
-        });
-    }
-});
+// AFRAME.registerComponent('demo', {
+//     init: function() {
+//         // console.log('init demo');
+//         this.loaded = false;
+//         window.addEventListener('gps-camera-update-position', e => {
+//           const pos = e.detail.position;
+//           // console.log('gps-camera-update-position', e, 'latlong', pos.latitude, pos.longitude);
+//           if(this.loaded === false) {
+//               addDemoElements(pos, this.el);
+//               this.loaded = true;
+//           }
+//         });
+//     }
+// });
