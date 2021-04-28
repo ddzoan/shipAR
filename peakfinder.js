@@ -37,9 +37,22 @@ AFRAME.registerComponent('peakfinder', {
           latitude: peak.geometry.coordinates[1],
           longitude: peak.geometry.coordinates[0]
         });
-        // console.log('entity is', entity, entity.getAttribute('gps-projected-entity-place'), entity.getAttribute('scale'), entity.getAttribute('look-at'));
         this.el.appendChild(entity);
       });
+
+    // for local demo only
+    const text = document.createElement('a-text');
+    ships.push(text);
+    text.setAttribute('look-at', '[gps-projected-camera]');
+    text.setAttribute('value', 'Hello\nThere');
+    text.setAttribute('align', 'center');
+    text.setAttribute('color', 'red');
+    text.setAttribute('scale', {x: scale, y: scale, z: scale});
+    text.setAttribute('gps-projected-entity-place', {
+      latitude: latitude - 0.0209221,
+      longitude: longitude - 0.025173
+    });
+    this.el.appendChild(text);
   },
   handleScale(event) {
     console.log('trying to scale', this.scaleFactor, event.detail.spreadChange, event.detail.startSpread)
@@ -176,18 +189,9 @@ function addDemoElements(pos, parentNode) {
   console.log('sphere demo is', entity, entity.getAttribute('gps-projected-entity-place'), entity.getAttribute('scale'), entity.getAttribute('position'), entity.getAttribute('material'));
   parentNode.appendChild(entity);
 
-  const text = document.createElement('a-text');
-  text.setAttribute('value', 'Hello There');
-  text.setAttribute('look-at', '[gps-projected-camera]');
-  text.setAttribute('side', 'double');
-  text.setAttribute('scale', '50 50 50');
-  text.setAttribute('position', '30 0 0');
-  text.setAttribute('gps-projected-entity-place', {
-    latitude: demoPos.latitude,
-    longitude: demoPos.longitude
-  });
-  console.log('text demo is', text, text.getAttribute('gps-projected-entity-place'), text.getAttribute('scale'), text.getAttribute('position'), text.getAttribute('material'));
-  parentNode.appendChild(text);
+
+  // console.log('text demo is', text, text.getAttribute('gps-projected-entity-place'), text.getAttribute('scale'), text.getAttribute('position'), text.getAttribute('material'));
+  // parentNode.appendChild(text);
 
     // <a-sphere gps-projected-entity-place='latitude: 21.28476974419701; longitude: -157.8382203975755;'
     //   material='color: red' scale='10 10 10' position='0 30 0'>
