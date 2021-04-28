@@ -20,7 +20,8 @@ AFRAME.registerComponent('peakfinder', {
         const entity = document.createElement('a-text');
         entity.setAttribute('look-at', '[gps-projected-camera]');
         entity.setAttribute('value', peak.properties.name);
-        entity.setAttribute('color', "red");
+        entity.setAttribute('align', 'center');
+        entity.setAttribute('color', 'red');
         entity.setAttribute('scale', {
           x: scale,
           y: scale,
@@ -45,9 +46,6 @@ AFRAME.registerComponent('peakfinder', {
       6000
     );
 
-    // el.object3D.scale.x = scaleFactor * initialScale.x;
-    // el.object3D.scale.y = scaleFactor * initialScale.y;
-    // el.object3D.scale.z = scaleFactor * initialScale.z;
     console.log("scaling of some sort", this.scaleFactor)
     this.el.childNodes.forEach(node => {
       node.object3D.scale.set(this.scaleFactor, this.scaleFactor, this.scaleFactor);
