@@ -30,7 +30,7 @@ AFRAME.registerComponent('peakfinder', {
           latitude: peak.geometry.coordinates[1],
           longitude: peak.geometry.coordinates[0]
         });
-        console.log('entity is', entity, entity.getAttribute('gps-projected-entity-place'), entity.getAttribute('scale'), entity.getAttribute('look-at'));
+        // console.log('entity is', entity, entity.getAttribute('gps-projected-entity-place'), entity.getAttribute('scale'), entity.getAttribute('look-at'));
         this.el.appendChild(entity);
       });
   },

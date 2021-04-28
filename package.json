@@ -1,0 +1,12 @@
+{
+  "name": "peakfinder",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "http-server": "^0.12.3",
+    "localtunnel": "^2.0.1",
+    "mime-types": "^2.1.30",
+    "qrcode-terminal": "^0.12.0"
+  }
+}
