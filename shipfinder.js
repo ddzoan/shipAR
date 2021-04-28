@@ -69,9 +69,9 @@ const shipList = [
   },
 ];
 
-AFRAME.registerComponent('peakfinder', {
+AFRAME.registerComponent('shipfinder', {
   init: function() {
-    console.log('init peakfinder');
+    console.log('init shipfinder');
     this.loaded = false;
     window.addEventListener('gps-camera-update-position', e => {
       // console.log('gps-camera-update-position', e);
