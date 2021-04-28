@@ -1,5 +1,7 @@
 const DEFAULT_SCALE = 1000;
 const ships = [];
+const MAXY = 5000;
+const MINY = -2000; // don't know why, my ship text is getting cut off a little below this
 
 AFRAME.registerComponent('peakfinder', {
   init: function() {
@@ -14,6 +16,7 @@ AFRAME.registerComponent('peakfinder', {
     });
     this.scene = document.getElementById('#scene');
     this.scene.addEventListener("twofingermove", this.handleScale.bind(this));
+    this.scene.addEventListener("onefingermove", this.handleScroll.bind(this));
   },
   loadShips: function(longitude, latitude) {
     const scale = DEFAULT_SCALE;
@@ -53,6 +56,18 @@ AFRAME.registerComponent('peakfinder', {
     ships.forEach(node => {
       node.object3D.scale.set(this.scaleFactor, this.scaleFactor, this.scaleFactor);
     });
+  },
+  handleScroll(event) {
+    console.log('y position', ships[0].object3D.position.y);
+    console.log(event.detail.positionChange.y)
+    ships.forEach(ship => {
+      const offset = event.detail.positionChange.y * 10000; // arbitrary to scale movement large enough
+      const newPosition = ship.object3D.position.y - offset;
+      ship.object3D.position.y = Math.min(
+        Math.max(MINY, newPosition),
+        MAXY
+      );
+    })
   },
   _peakList: {
     "features": [
