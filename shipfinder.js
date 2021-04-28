@@ -3,75 +3,88 @@ const ships = [];
 const MAXY = 5000;
 const MINY = -2000; // don't know why, my ship text is getting cut off a little below this
 
-const shipList = [
-  {
+const shipList = {
+   "MATSONIA": {
     "properties":
       {
         "name": "MATSONIA",
-        "natural": "peak",
-        "featuretype": "vessel"
+        "featuretype": "vessel",
+        "flex_ids": ["FLEX-2116397"],
+        "coordinates_created_at": "2020-04-06 20:26:39 UTC"
       },
     "geometry": {"type": "Point", "coordinates": [-122.303163, 37.771927]}
   },
-  {
+  "HORIZON SPIRIT": {
     "properties":
       {
         "name": "HORIZON SPIRIT",
-        "natural": "peak",
-        "featuretype": "vessel"
+        "featuretype": "vessel",
+        "flex_ids": ["FLEX-2955952"],
+        "coordinates_created_at": "2021-04-28 21:51:36 UTC"
       },
-    "geometry": {"type": "Point", "coordinates": [-122.309125, 37.794537]}
+    "geometry": {"type": "Point", "coordinates": [-122.309135, 37.794527]}
   },
-  {
+  "HYUNDAI MARS": {
     "properties":
       {
         "name": "HYUNDAI MARS",
-        "natural": "peak",
-        "featuretype": "vessel"
+        "featuretype": "vessel",
+        "flex_ids":
+          ["FLEX-2688450", "FLEX-2226946", "FLEX-2192919", "FLEX-2638504"],
+        "coordinates_created_at": "2021-04-28 21:51:37 UTC"
       },
-    "geometry": {"type": "Point", "coordinates": [-122.320028, 37.813298]}
+    "geometry": {"type": "Point", "coordinates": [-122.319997, 37.81328]}
   },
-  {
+  "EVER LOYAL": {
     "properties":
       {
         "name": "EVER LOYAL",
-        "natural": "peak",
-        "featuretype": "vessel"
+        "featuretype": "vessel",
+        "flex_ids": ["FLEX-2728285"],
+        "coordinates_created_at": "2021-04-28 21:51:39 UTC"
       },
-    "geometry": {"type": "Point", "coordinates": [-122.338888, 37.80809]}
+    "geometry": {"type": "Point", "coordinates": [-122.338878, 37.808062]}
   },
-  {
+  "MSC CAMILLE": {
     "properties":
       {
         "name": "MSC CAMILLE",
-        "natural": "peak",
-        "featuretype": "vessel"
+        "featuretype": "vessel",
+        "flex_ids":
+          ["FLEX-2165217",
+            "FLEX-2394763",
+            "FLEX-2987096",
+            "FLEX-2145898",
+            "FLEX-2531357"],
+        "coordinates_created_at": "2021-04-28 21:51:43 UTC"
       },
-    "geometry": {"type": "Point", "coordinates": [-122.314907, 37.79589]}
+    "geometry": {"type": "Point", "coordinates": [-122.314917, 37.79589]}
   },
-  {
+  "CAP SAN JUAN": {
     "properties":
       {
         "name": "CAP SAN JUAN",
-        "natural": "peak",
-        "featuretype": "vessel"
+        "featuretype": "vessel",
+        "flex_ids": ["FLEX-2636550"],
+        "coordinates_created_at": "2021-04-28 21:51:49 UTC"
       },
-    "geometry": {"type": "Point", "coordinates": [-122.32005, 37.797217]}
+    "geometry": {"type": "Point", "coordinates": [-122.32, 37.796667]}
   },
-  {
+  "NYK CONSTELLATION": {
     "properties":
       {
         "name": "NYK CONSTELLATION",
-        "natural": "peak",
-        "featuretype": "vessel"
+        "featuretype": "vessel",
+        "flex_ids": ["FLEX-2573853", "FLEX-2081899"],
+        "coordinates_created_at": "2021-04-28 21:52:10 UTC"
       },
-    "geometry": {"type": "Point", "coordinates": [-122.322752, 37.798085]}
-  },
-];
+    "geometry": {"type": "Point", "coordinates": [-122.322928, 37.798278]}
+  }
+};
 
 AFRAME.registerComponent('shipfinder', {
   init: function() {
-    console.log('init shipfinder');
+    // console.log('init shipfinder');
     this.loaded = false;
     window.addEventListener('gps-camera-update-position', e => {
       // console.log('gps-camera-update-position', e);
@@ -83,15 +96,24 @@ AFRAME.registerComponent('shipfinder', {
     this.scene = document.getElementById('#scene');
     this.scene.addEventListener("twofingermove", this.handleScale.bind(this));
     this.scene.addEventListener("onefingermove", this.handleScroll.bind(this));
+
+    const toggle = document.createElement('button');
+    toggle.innerText = "Shipments";
+    toggle.style.position = 'fixed';
+    toggle.style.bottom = '8px';
+    toggle.style.left = '150px';
+    toggle.onclick = this.toggleData.bind(this);
+    document.body.appendChild(toggle);
   },
   loadShips: function(longitude, latitude) {
     const scale = DEFAULT_SCALE;
-    shipList
+    Object.values(shipList)
       .forEach (peak => {
         const entity = document.createElement('a-text');
         ships.push(entity);
         entity.setAttribute('look-at', '[gps-projected-camera]');
         entity.setAttribute('value', peak.properties.name);
+        entity.setAttribute('id', peak.properties.name);
         entity.setAttribute('align', 'center');
         entity.setAttribute('color', 'red');
         entity.setAttribute('scale', {
@@ -111,6 +133,7 @@ AFRAME.registerComponent('shipfinder', {
     ships.push(text);
     text.setAttribute('look-at', '[gps-projected-camera]');
     text.setAttribute('value', 'Hello\nThere');
+    text.setAttribute('id', 'Hello\nThere');
     text.setAttribute('align', 'center');
     text.setAttribute('color', 'red');
     text.setAttribute('scale', {x: scale, y: scale, z: scale});
@@ -121,7 +144,7 @@ AFRAME.registerComponent('shipfinder', {
     this.el.appendChild(text);
   },
   handleScale(event) {
-    console.log('trying to scale', this.scaleFactor, event.detail.spreadChange, event.detail.startSpread)
+    // console.log('trying to scale', this.scaleFactor, event.detail.spreadChange, event.detail.startSpread)
     this.scaleFactor = this.scaleFactor || DEFAULT_SCALE;
     this.scaleFactor *=
       1 + event.detail.spreadChange / event.detail.startSpread;
@@ -131,14 +154,14 @@ AFRAME.registerComponent('shipfinder', {
       DEFAULT_SCALE*2
     );
 
-    console.log("scaling of some sort", this.scaleFactor)
+    // console.log("scaling of some sort", this.scaleFactor)
     ships.forEach(node => {
       node.object3D.scale.set(this.scaleFactor, this.scaleFactor, this.scaleFactor);
     });
   },
   handleScroll(event) {
-    console.log('y position', ships[0].object3D.position.y);
-    console.log(event.detail.positionChange.y)
+    // console.log('y position', ships[0].object3D.position.y);
+    // console.log(event.detail.positionChange.y)
     ships.forEach(ship => {
       const offset = event.detail.positionChange.y * 10000; // arbitrary to scale movement large enough
       const newPosition = ship.object3D.position.y - offset;
@@ -148,6 +171,12 @@ AFRAME.registerComponent('shipfinder', {
       );
     })
   },
+  toggleData(event) {
+    const shipmentsMode = event.target.innerText === 'Shipments';
+    event.target.innerText = shipmentsMode ? 'Ships' : 'Shipments';
+    console.log(ships[0].getAttribute('id'))
+    console.log(ships[0])
+  }
 });
 
 
@@ -166,7 +195,7 @@ function addDemoElements(pos, parentNode) {
     latitude: demoPos.latitude,
     longitude: demoPos.longitude
   });
-  console.log('sphere demo is', entity, entity.getAttribute('gps-projected-entity-place'), entity.getAttribute('scale'), entity.getAttribute('position'), entity.getAttribute('material'));
+  // console.log('sphere demo is', entity, entity.getAttribute('gps-projected-entity-place'), entity.getAttribute('scale'), entity.getAttribute('position'), entity.getAttribute('material'));
   parentNode.appendChild(entity);
 
 
@@ -183,11 +212,11 @@ function addDemoElements(pos, parentNode) {
 
 AFRAME.registerComponent('demo', {
     init: function() {
-        console.log('init demo');
+        // console.log('init demo');
         this.loaded = false;
         window.addEventListener('gps-camera-update-position', e => {
           const pos = e.detail.position;
-          console.log('gps-camera-update-position', e, 'latlong', pos.latitude, pos.longitude);
+          // console.log('gps-camera-update-position', e, 'latlong', pos.latitude, pos.longitude);
           if(this.loaded === false) {
               addDemoElements(pos, this.el);
               this.loaded = true;
