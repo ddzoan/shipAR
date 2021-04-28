@@ -103,7 +103,7 @@ AFRAME.registerComponent('shipfinder', {
     this.scene.addEventListener("onefingermove", this.handleScroll.bind(this));
 
     const toggle = document.createElement('button');
-    toggle.innerText = "Shipments";
+    toggle.innerText = 'Ships';
     toggle.style.position = 'fixed';
     toggle.style.bottom = '8px';
     toggle.style.left = '150px';
