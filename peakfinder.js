@@ -1,4 +1,5 @@
 const DEFAULT_SCALE = 1000;
+const ships = [];
 
 AFRAME.registerComponent('peakfinder', {
   init: function() {
@@ -7,18 +8,19 @@ AFRAME.registerComponent('peakfinder', {
     window.addEventListener('gps-camera-update-position', e => {
       // console.log('gps-camera-update-position', e);
       if(this.loaded === false) {
-        this._loadPeaks(e.detail.position.longitude, e.detail.position.latitude);
+        this.loadShips(e.detail.position.longitude, e.detail.position.latitude);
         this.loaded = true;
       }
     });
     this.scene = document.getElementById('#scene');
     this.scene.addEventListener("twofingermove", this.handleScale.bind(this));
   },
-  _loadPeaks: function(longitude, latitude) {
+  loadShips: function(longitude, latitude) {
     const scale = DEFAULT_SCALE;
     this._peakList.features.filter ( f => f.properties.natural == 'peak' )
       .forEach (peak => {
         const entity = document.createElement('a-text');
+        ships.push(entity);
         entity.setAttribute('look-at', '[gps-projected-camera]');
         entity.setAttribute('value', peak.properties.name);
         entity.setAttribute('align', 'center');
@@ -48,7 +50,7 @@ AFRAME.registerComponent('peakfinder', {
     );
 
     console.log("scaling of some sort", this.scaleFactor)
-    this.el.childNodes.forEach(node => {
+    ships.forEach(node => {
       node.object3D.scale.set(this.scaleFactor, this.scaleFactor, this.scaleFactor);
     });
   },
