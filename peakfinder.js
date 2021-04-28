@@ -90,6 +90,35 @@ AFRAME.registerComponent('peakfinder', {
       {
         "type": "Feature",
         "properties": {
+          "osm_id": "344xxxxxx",
+          "name": "Rando Point",
+          "natural": "peak",
+          "featuretype": "hill"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.2839,
+            37.790812
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "osm_id": "346xxxxxx",
+          "name": "Mission Point",
+          "natural": "peak",
+          "featuretype": "hill"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [34.311713, -118.533824]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
           "osm_id": "346xxxxxx",
           "name": "Baby Peak",
           "natural": "peak",
