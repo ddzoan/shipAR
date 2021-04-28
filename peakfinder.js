@@ -11,7 +11,7 @@ AFRAME.registerComponent('peakfinder', {
       }
     });
     this.scene = document.getElementById('#scene');
-    this.scene.addEventListener("twofingermove", this.handleScale);
+    this.scene.addEventListener("twofingermove", this.handleScale.bind(this));
   },
   _loadPeaks: function(longitude, latitude) {
     const scale = 3000;
@@ -35,19 +35,23 @@ AFRAME.registerComponent('peakfinder', {
       });
   },
   handleScale(event) {
-    console.log('trying to scale')
+    console.log('trying to scale', this.scaleFactor, event.detail.spreadChange, event.detail.startSpread)
+    this.scaleFactor = this.scaleFactor || 3000;
     this.scaleFactor *=
       1 + event.detail.spreadChange / event.detail.startSpread;
 
-    // this.scaleFactor = Math.min(
-    //   Math.max(this.scaleFactor, this.data.minScale),
-    //   this.data.maxScale
-    // );
+    this.scaleFactor = Math.min(
+      Math.max(this.scaleFactor, 1500),
+      6000
+    );
 
     // el.object3D.scale.x = scaleFactor * initialScale.x;
     // el.object3D.scale.y = scaleFactor * initialScale.y;
     // el.object3D.scale.z = scaleFactor * initialScale.z;
     console.log("scaling of some sort", this.scaleFactor)
+    this.el.childNodes.forEach(node => {
+      node.object3D.scale.set(this.scaleFactor, this.scaleFactor, this.scaleFactor);
+    });
   },
   _peakList: {
     "features": [
