@@ -9,6 +9,7 @@
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/dev/aframe/build/aframe-ar-nft.js"></script>
     <script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
+    <script src="draw-user-coordinates.js"></script>
     <script src="peakfinder.js"></script>
 </head>
 
@@ -18,6 +19,8 @@
          renderer='antialias: true; alpha: true'>
     <a-camera gps-projected-camera rotation-reader maxDistance="150000" position="0 30 120"></a-camera>
     <a-entity peakfinder></a-entity>
+    <a-entity drawusercoordinates></a-entity>
+
 </a-scene>
 </body>
 
