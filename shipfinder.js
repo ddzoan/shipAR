@@ -4,7 +4,7 @@ const MAXY = 5000;
 const MINY = -2000; // don't know why, my ship text is getting cut off a little below this
 
 const shipList = {
-   "MATSONIA": {
+  "MATSONIA": {
     "properties":
       {
         "name": "MATSONIA",
@@ -40,7 +40,7 @@ const shipList = {
       {
         "name": "EVER LOYAL",
         "featuretype": "vessel",
-        "flex_ids": ["FLEX-2728285"],
+        "flex_ids": ["FLEX-2728285", "SUPERFLEX-123", "FLEX-1B13"],
         "coordinates_created_at": "2021-04-28 21:51:39 UTC"
       },
     "geometry": {"type": "Point", "coordinates": [-122.338878, 37.808062]}
@@ -79,6 +79,11 @@ const shipList = {
         "coordinates_created_at": "2021-04-28 21:52:10 UTC"
       },
     "geometry": {"type": "Point", "coordinates": [-122.322928, 37.798278]}
+  },
+  "Hello\nThere": {
+    "properties": {
+      "flex_ids": ["hello-flex"]
+    }
   }
 };
 
@@ -107,13 +112,13 @@ AFRAME.registerComponent('shipfinder', {
   },
   loadShips: function(longitude, latitude) {
     const scale = DEFAULT_SCALE;
-    Object.values(shipList)
-      .forEach (peak => {
+    Object.values(shipList).slice(0,-1)
+      .forEach (ship => {
         const entity = document.createElement('a-text');
         ships.push(entity);
         entity.setAttribute('look-at', '[gps-projected-camera]');
-        entity.setAttribute('value', peak.properties.name);
-        entity.setAttribute('id', peak.properties.name);
+        entity.setAttribute('value', ship.properties.name);
+        entity.setAttribute('id', ship.properties.name);
         entity.setAttribute('align', 'center');
         entity.setAttribute('color', 'red');
         entity.setAttribute('scale', {
@@ -122,8 +127,8 @@ AFRAME.registerComponent('shipfinder', {
           z: scale
         });
         entity.setAttribute('gps-projected-entity-place', {
-          latitude: peak.geometry.coordinates[1],
-          longitude: peak.geometry.coordinates[0]
+          latitude: ship.geometry.coordinates[1],
+          longitude: ship.geometry.coordinates[0]
         });
         this.el.appendChild(entity);
       });
@@ -172,13 +177,22 @@ AFRAME.registerComponent('shipfinder', {
     })
   },
   toggleData(event) {
-    const shipmentsMode = event.target.innerText === 'Shipments';
-    event.target.innerText = shipmentsMode ? 'Ships' : 'Shipments';
+    const wasShipmentsMode = event.target.innerText === 'Shipments';
+    event.target.innerText = wasShipmentsMode ? 'Ships' : 'Shipments';
     console.log(ships[0].getAttribute('id'))
     console.log(ships[0])
+    ships.forEach(ship => {
+      const shipName = ship.getAttribute('id');
+      const text = wasShipmentsMode ? shipName : shipmentsText(shipName);
+      ship.setAttribute('value', text);
+    })
   }
 });
 
+const shipmentsText = (name) => {
+  console.log(shipList[name])
+  return shipList[name].properties.flex_ids.join('\n')
+};
 
 function addDemoElements(pos, parentNode) {
   const demoPos = {
