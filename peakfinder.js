@@ -57,7 +57,7 @@ AFRAME.registerComponent('peakfinder', {
         "type": "Feature",
         "properties": {
           "osm_id": "345xxxxxx",
-          "name": "Twin Peaks",
+          "name": "Twin\nPeaks",
           "natural": "peak",
           "featuretype": "hill"
         },
