@@ -137,3 +137,62 @@ AFRAME.registerComponent('peakfinder', {
     "type": "FeatureCollection"
   }
 });
+
+
+
+
+
+
+function addDemoElements(pos, parentNode) {
+  const demoPos = {
+    latitude: pos.latitude - 0.00119,
+    longitude: pos.longitude - 0.0005
+  };
+
+
+  const entity = document.createElement('a-sphere');
+  entity.setAttribute('material', 'color: red');
+  entity.setAttribute('position', '0 30 0');
+  entity.setAttribute('scale', '10 10 10');
+  entity.setAttribute('gps-projected-entity-place', {
+    latitude: demoPos.latitude,
+    longitude: demoPos.longitude
+  });
+  console.log('sphere demo is', entity, entity.getAttribute('gps-projected-entity-place'), entity.getAttribute('scale'), entity.getAttribute('position'), entity.getAttribute('material'));
+  parentNode.appendChild(entity);
+
+  const text = document.createElement('a-text');
+  text.setAttribute('value', 'Hello There');
+  text.setAttribute('look-at', '[gps-projected-camera]');
+  text.setAttribute('side', 'double');
+  text.setAttribute('scale', '50 50 50');
+  text.setAttribute('position', '30 0 0');
+  text.setAttribute('gps-projected-entity-place', {
+    latitude: demoPos.latitude,
+    longitude: demoPos.longitude
+  });
+  console.log('text demo is', text, text.getAttribute('gps-projected-entity-place'), text.getAttribute('scale'), text.getAttribute('position'), text.getAttribute('material'));
+  parentNode.appendChild(text);
+
+    // <a-sphere gps-projected-entity-place='latitude: 21.28476974419701; longitude: -157.8382203975755;'
+    //   material='color: red' scale='10 10 10' position='0 30 0'>
+    // </a-sphere>
+    // <a-text value="Hello There" look-at="[gps-projected-camera]" side="double" scale="50 50 50" position='30 0 0'
+    //   gps-projected-entity-place="latitude: 21.28476974419701; longitude: -157.8382203975755;"></a-text>
+}
+
+
+AFRAME.registerComponent('demo', {
+    init: function() {
+        console.log('init demo');
+        this.loaded = false;
+        window.addEventListener('gps-camera-update-position', e => {
+          const pos = e.detail.position;
+          console.log('gps-camera-update-position', e, 'latlong', pos.latitude, pos.longitude);
+          if(this.loaded === false) {
+              addDemoElements(pos, this.el);
+              this.loaded = true;
+          }
+        });
+    }
+});

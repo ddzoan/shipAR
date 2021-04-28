@@ -14,14 +14,13 @@
 </head>
 
 <body>
-<a-scene id="#scene" vr-mode-ui="enabled: true" arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: true;'
-         gesture-detector
-         renderer='antialias: true; alpha: true'>
-    <a-camera gps-projected-camera rotation-reader maxDistance="150000" position="0 30 120"></a-camera>
-    <a-entity peakfinder></a-entity>
-    <a-entity drawusercoordinates></a-entity>
-
-</a-scene>
+    <a-scene id="#scene" vr-mode-ui="enabled: true" arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: true;'
+        gesture-detector renderer='antialias: true; alpha: true'>
+        <a-camera gps-projected-camera rotation-reader maxDistance="150000" position="0 30 120"></a-camera>
+        <a-entity peakfinder></a-entity>
+        <a-entity drawusercoordinates></a-entity>
+        <a-entity demo></a-entity>
+    </a-scene>
 </body>
 
 </html>
