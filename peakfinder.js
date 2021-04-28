@@ -5,10 +5,8 @@ const MINY = -2000; // don't know why, my ship text is getting cut off a little 
 
 const shipList = [
   {
-    "type": "Feature",
     "properties":
       {
-        "osm_id": 2209,
         "name": "MATSONIA",
         "natural": "peak",
         "featuretype": "vessel"
@@ -16,10 +14,8 @@ const shipList = [
     "geometry": {"type": "Point", "coordinates": [-122.303163, 37.771927]}
   },
   {
-    "type": "Feature",
     "properties":
       {
-        "osm_id": 34717,
         "name": "HORIZON SPIRIT",
         "natural": "peak",
         "featuretype": "vessel"
@@ -27,10 +23,8 @@ const shipList = [
     "geometry": {"type": "Point", "coordinates": [-122.309125, 37.794537]}
   },
   {
-    "type": "Feature",
     "properties":
       {
-        "osm_id": 553,
         "name": "HYUNDAI MARS",
         "natural": "peak",
         "featuretype": "vessel"
@@ -38,10 +32,8 @@ const shipList = [
     "geometry": {"type": "Point", "coordinates": [-122.320028, 37.813298]}
   },
   {
-    "type": "Feature",
     "properties":
       {
-        "osm_id": 764,
         "name": "EVER LOYAL",
         "natural": "peak",
         "featuretype": "vessel"
@@ -49,10 +41,8 @@ const shipList = [
     "geometry": {"type": "Point", "coordinates": [-122.338888, 37.80809]}
   },
   {
-    "type": "Feature",
     "properties":
       {
-        "osm_id": 1040,
         "name": "MSC CAMILLE",
         "natural": "peak",
         "featuretype": "vessel"
@@ -60,10 +50,8 @@ const shipList = [
     "geometry": {"type": "Point", "coordinates": [-122.314907, 37.79589]}
   },
   {
-    "type": "Feature",
     "properties":
       {
-        "osm_id": 1780,
         "name": "CAP SAN JUAN",
         "natural": "peak",
         "featuretype": "vessel"
@@ -71,10 +59,8 @@ const shipList = [
     "geometry": {"type": "Point", "coordinates": [-122.32005, 37.797217]}
   },
   {
-    "type": "Feature",
     "properties":
       {
-        "osm_id": 745,
         "name": "NYK CONSTELLATION",
         "natural": "peak",
         "featuretype": "vessel"
