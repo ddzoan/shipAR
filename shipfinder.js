@@ -40,7 +40,11 @@ const shipList = {
       {
         "name": "EVER LOYAL",
         "featuretype": "vessel",
-        "flex_ids": ["FLEX-2728285", "SUPERFLEX-123", "FLEX-1B13"],
+        "flex_ids": [
+          "FLEX-2728285",
+          // "SUPERFLEX-123",
+          // "FLEX-1B13"
+        ],
         "coordinates_created_at": "2021-04-28 21:51:39 UTC"
       },
     "geometry": {"type": "Point", "coordinates": [-122.338878, 37.808062]}
