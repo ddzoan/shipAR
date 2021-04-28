@@ -1,3 +1,4 @@
+const DEFAULT_SCALE = 1000;
 
 AFRAME.registerComponent('peakfinder', {
   init: function() {
@@ -14,7 +15,7 @@ AFRAME.registerComponent('peakfinder', {
     this.scene.addEventListener("twofingermove", this.handleScale.bind(this));
   },
   _loadPeaks: function(longitude, latitude) {
-    const scale = 3000;
+    const scale = DEFAULT_SCALE;
     this._peakList.features.filter ( f => f.properties.natural == 'peak' )
       .forEach (peak => {
         const entity = document.createElement('a-text');
@@ -37,13 +38,13 @@ AFRAME.registerComponent('peakfinder', {
   },
   handleScale(event) {
     console.log('trying to scale', this.scaleFactor, event.detail.spreadChange, event.detail.startSpread)
-    this.scaleFactor = this.scaleFactor || 3000;
+    this.scaleFactor = this.scaleFactor || DEFAULT_SCALE;
     this.scaleFactor *=
       1 + event.detail.spreadChange / event.detail.startSpread;
 
     this.scaleFactor = Math.min(
-      Math.max(this.scaleFactor, 1500),
-      6000
+      Math.max(this.scaleFactor, DEFAULT_SCALE/2),
+      DEFAULT_SCALE*2
     );
 
     console.log("scaling of some sort", this.scaleFactor)
