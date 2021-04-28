@@ -179,8 +179,6 @@ AFRAME.registerComponent('shipfinder', {
   toggleData(event) {
     const wasShipmentsMode = event.target.innerText === 'Shipments';
     event.target.innerText = wasShipmentsMode ? 'Ships' : 'Shipments';
-    console.log(ships[0].getAttribute('id'))
-    console.log(ships[0])
     ships.forEach(ship => {
       const shipName = ship.getAttribute('id');
       const text = wasShipmentsMode ? shipName : shipmentsText(shipName);
