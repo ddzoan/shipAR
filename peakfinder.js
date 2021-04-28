@@ -89,17 +89,17 @@ AFRAME.registerComponent('peakfinder', {
         "type": "Feature",
         "properties": {
           "osm_id": "344xxxxxx",
-          "name": "10.7km Point",
+          "name": "8.5 km Point",
           "natural": "peak",
           "featuretype": "hill"
         },
         "geometry": {
           "type": "Point",
           "coordinates": [
-            // -122.348388,
-            // 37.788838
-            -122.332721,
-            37.803124
+            -122.348388,
+            37.788838
+            // -122.332721,
+            // 37.803124
           ]
         }
       },
