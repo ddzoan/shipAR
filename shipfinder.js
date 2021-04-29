@@ -4,19 +4,6 @@ const MAXY = 5000;
 const MINY = -2000; // don't know why, my ship text is getting cut off a little below this
 
 const shipList = {
-  MATSONIA: {
-    properties: {
-      name: "MATSONIA",
-      featuretype: "vessel",
-      vessel_id: 2209,
-      flex_ids: ["FLEX-2116397"],
-      coordinates_created_at: "2020-04-06 20:26:39 UTC",
-    },
-    geometry: {
-      type: "Point",
-      coordinates: [-122.303163, 37.771927],
-    },
-  },
   "HORIZON SPIRIT": {
     properties: {
       name: "HORIZON SPIRIT",
