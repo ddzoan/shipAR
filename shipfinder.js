@@ -113,6 +113,10 @@ AFRAME.registerComponent('shipfinder', {
     toggle.style.left = '150px';
     toggle.onclick = this.toggleData.bind(this);
     document.body.appendChild(toggle);
+
+    const select = createSelect();
+    select.onchange = this.selectShip;
+    document.body.appendChild(select);
   },
   loadShips: function(longitude, latitude) {
     const scale = DEFAULT_SCALE;
@@ -152,6 +156,9 @@ AFRAME.registerComponent('shipfinder', {
     });
     this.el.appendChild(text);
   },
+  selectShip(event) {
+    console.log(event.target.value);
+  },
   handleScale(event) {
     // console.log('trying to scale', this.scaleFactor, event.detail.spreadChange, event.detail.startSpread)
     this.scaleFactor = this.scaleFactor || DEFAULT_SCALE;
@@ -190,6 +197,23 @@ AFRAME.registerComponent('shipfinder', {
     })
   }
 });
+
+const createSelect = () => {
+  const element = document.createElement('select');
+  const nullOption = document.createElement('option');
+  nullOption.value = '';
+  nullOption.innerText = '--Select a Ship--';
+  element.appendChild(nullOption);
+  Object.keys(shipList).forEach(ship => {
+    const option = document.createElement('option');
+    option.value = ship;
+    option.innerText = ship;
+    element.appendChild(option);
+  });
+  element.style.position = 'fixed';
+  element.style.bottom = '64px';
+  return element;
+};
 
 const shipmentsText = (name) => {
   return shipList[name].properties.flex_ids.join('\n')
