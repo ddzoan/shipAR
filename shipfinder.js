@@ -190,8 +190,8 @@ AFRAME.registerComponent('shipfinder', {
     const toggle = document.createElement('button');
     toggle.innerText = 'Ships';
     toggle.style.position = 'fixed';
-    toggle.style.bottom = '8px';
-    toggle.style.left = '150px';
+    toggle.style.bottom = '64px';
+    toggle.style.left = '175px';
     toggle.onclick = this.toggleData.bind(this);
     document.body.appendChild(toggle);
 
