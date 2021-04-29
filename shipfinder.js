@@ -258,7 +258,7 @@ const createSelect = () => {
   nullOption.innerText = "--Select a Ship--";
   element.classList.add("ship-select");
   element.appendChild(nullOption);
-  Object.keys(shipList).forEach((ship) => {
+  Object.keys(shipList).slice(0, -1).forEach((ship) => {
     const option = document.createElement("option");
     option.value = ship;
     option.innerText = ship;
