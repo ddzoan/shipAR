@@ -5,84 +5,165 @@ const MINY = -2000; // don't know why, my ship text is getting cut off a little 
 
 const shipList = {
   "MATSONIA": {
-    "properties":
-      {
-        "name": "MATSONIA",
-        "featuretype": "vessel",
-        "flex_ids": ["FLEX-2116397"],
-        "coordinates_created_at": "2020-04-06 20:26:39 UTC"
-      },
-    "geometry": {"type": "Point", "coordinates": [-122.303163, 37.771927]}
+    "properties": {
+      "name": "MATSONIA",
+      "featuretype": "vessel",
+      "vessel_id": 2209,
+      "flex_ids": [
+        "FLEX-2116397"
+      ],
+      "coordinates_created_at": "2020-04-06 20:26:39 UTC"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.303163,
+        37.771927
+      ]
+    }
   },
   "HORIZON SPIRIT": {
-    "properties":
-      {
-        "name": "HORIZON SPIRIT",
-        "featuretype": "vessel",
-        "flex_ids": ["FLEX-2955952"],
-        "coordinates_created_at": "2021-04-28 21:51:36 UTC"
-      },
-    "geometry": {"type": "Point", "coordinates": [-122.309135, 37.794527]}
+    "properties": {
+      "name": "HORIZON SPIRIT",
+      "featuretype": "vessel",
+      "vessel_id": 34717,
+      "flex_ids": [
+        "FLEX-2955952"
+      ],
+      "coordinates_created_at": "2021-04-29 00:51:43 UTC"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.337023,
+        37.800348
+      ]
+    }
   },
   "HYUNDAI MARS": {
-    "properties":
-      {
-        "name": "HYUNDAI MARS",
-        "featuretype": "vessel",
-        "flex_ids":
-          ["FLEX-2688450", "FLEX-2226946", "FLEX-2192919", "FLEX-2638504"],
-        "coordinates_created_at": "2021-04-28 21:51:37 UTC"
-      },
-    "geometry": {"type": "Point", "coordinates": [-122.319997, 37.81328]}
+    "properties": {
+      "name": "HYUNDAI MARS",
+      "featuretype": "vessel",
+      "vessel_id": 553,
+      "flex_ids": [
+        "FLEX-2688450",
+        "FLEX-2226946",
+        "FLEX-2192919",
+        "FLEX-2638504"
+      ],
+      "coordinates_created_at": "2021-04-29 00:51:43 UTC"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.320003,
+        37.813302
+      ]
+    }
+  },
+  "ONE HANGZHOU BAY": {
+    "properties": {
+      "name": "ONE HANGZHOU BAY",
+      "featuretype": "vessel",
+      "vessel_id": 251,
+      "flex_ids": [
+        "FLEX-2628557",
+        "FLEX-2381533",
+        "FLEX-2735961",
+        "FLEX-2689691",
+        "FLEX-2981972",
+        "FLEX-2372373",
+        "FLEX-2912283",
+        "FLEX-2024126",
+        "FLEX-2592936",
+        "FLEX-2210119"
+      ],
+      "coordinates_created_at": "2021-04-29 00:51:46 UTC"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.328717,
+        37.810767
+      ]
+    }
   },
   "EVER LOYAL": {
-    "properties":
-      {
-        "name": "EVER LOYAL",
-        "featuretype": "vessel",
-        "flex_ids": [
-          "FLEX-2728285",
-          // "SUPERFLEX-123",
-          // "FLEX-1B13"
-        ],
-        "coordinates_created_at": "2021-04-28 21:51:39 UTC"
-      },
-    "geometry": {"type": "Point", "coordinates": [-122.338878, 37.808062]}
+    "properties": {
+      "name": "EVER LOYAL",
+      "featuretype": "vessel",
+      "vessel_id": 764,
+      "flex_ids": [
+        "FLEX-2728285"
+      ],
+      "coordinates_created_at": "2021-04-29 00:51:47 UTC"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.338872,
+        37.80807
+      ]
+    }
   },
   "MSC CAMILLE": {
-    "properties":
-      {
-        "name": "MSC CAMILLE",
-        "featuretype": "vessel",
-        "flex_ids":
-          ["FLEX-2165217",
-            "FLEX-2394763",
-            "FLEX-2987096",
-            "FLEX-2145898",
-            "FLEX-2531357"],
-        "coordinates_created_at": "2021-04-28 21:51:43 UTC"
-      },
-    "geometry": {"type": "Point", "coordinates": [-122.314917, 37.79589]}
+    "properties": {
+      "name": "MSC CAMILLE",
+      "featuretype": "vessel",
+      "vessel_id": 1040,
+      "flex_ids": [
+        "FLEX-2165217",
+        "FLEX-2394763",
+        "FLEX-2987096",
+        "FLEX-2145898",
+        "FLEX-2531357"
+      ],
+      "coordinates_created_at": "2021-04-29 00:51:51 UTC"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.314923,
+        37.795898
+      ]
+    }
   },
   "CAP SAN JUAN": {
-    "properties":
-      {
-        "name": "CAP SAN JUAN",
-        "featuretype": "vessel",
-        "flex_ids": ["FLEX-2636550"],
-        "coordinates_created_at": "2021-04-28 21:51:49 UTC"
-      },
-    "geometry": {"type": "Point", "coordinates": [-122.32, 37.796667]}
+    "properties": {
+      "name": "CAP SAN JUAN",
+      "featuretype": "vessel",
+      "vessel_id": 1780,
+      "flex_ids": [
+        "FLEX-2636550"
+      ],
+      "coordinates_created_at": "2021-04-29 00:51:57 UTC"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.32,
+        37.796667
+      ]
+    }
   },
   "NYK CONSTELLATION": {
-    "properties":
-      {
-        "name": "NYK CONSTELLATION",
-        "featuretype": "vessel",
-        "flex_ids": ["FLEX-2573853", "FLEX-2081899"],
-        "coordinates_created_at": "2021-04-28 21:52:10 UTC"
-      },
-    "geometry": {"type": "Point", "coordinates": [-122.322928, 37.798278]}
+    "properties": {
+      "name": "NYK CONSTELLATION",
+      "featuretype": "vessel",
+      "vessel_id": 745,
+      "flex_ids": [
+        "FLEX-2573853",
+        "FLEX-2081899"
+      ],
+      "coordinates_created_at": "2021-04-29 00:52:21 UTC"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -122.322775,
+        37.798065
+      ]
+    }
   },
   "Hello\nThere": {
     "properties": {
