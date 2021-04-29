@@ -176,15 +176,17 @@ AFRAME.registerComponent("shipfinder", {
         entity.setAttribute("value", ship.properties.name);
         entity.setAttribute("id", ship.properties.name);
         entity.setAttribute("align", "center");
-        entity.setAttribute("color", "red");
+        entity.setAttribute("color", "#D92736");
         entity.setAttribute("scale", {
           x: scale,
           y: scale,
           z: scale,
         });
         entity.setAttribute("gps-projected-entity-place", {
-          latitude: (fake ? (latitude - 37.787099): 0) + ship.geometry.coordinates[1],
-          longitude: (fake ? (longitude + 122.373562) : 0) + ship.geometry.coordinates[0]
+          latitude:
+            (fake ? latitude - 37.787099 : 0) + ship.geometry.coordinates[1],
+          longitude:
+            (fake ? longitude + 122.373562 : 0) + ship.geometry.coordinates[0],
         });
         this.el.appendChild(entity);
       });
@@ -258,12 +260,14 @@ const createSelect = () => {
   nullOption.innerText = "--Select a Ship--";
   element.classList.add("ship-select");
   element.appendChild(nullOption);
-  Object.keys(shipList).slice(0, -1).forEach((ship) => {
-    const option = document.createElement("option");
-    option.value = ship;
-    option.innerText = ship;
-    element.appendChild(option);
-  });
+  Object.keys(shipList)
+    .slice(0, -1)
+    .forEach((ship) => {
+      const option = document.createElement("option");
+      option.value = ship;
+      option.innerText = ship;
+      element.appendChild(option);
+    });
   element.style.position = "fixed";
   element.style.bottom = "64px";
   return element;
