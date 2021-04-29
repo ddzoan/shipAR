@@ -21,7 +21,7 @@
         <div class="aframe">
             <a-scene id="#scene" vr-mode-ui="enabled: true" arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: true;'
                 gesture-detector renderer='antialias: true; alpha: true'>
-            <a-camera gps-projected-camera rotation-reader look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' gps-camera='gpsMinDistance: 5' maxDistance="150000" position="0 30 120"></a-camera>
+            <a-camera gps-projected-camera rotation-reader maxDistance="150000" position="0 30 120"></a-camera>
             <a-entity shipfinder></a-entity>
             <a-entity drawusercoordinates></a-entity>
     <!--        <a-entity demo></a-entity>-->
