@@ -240,7 +240,7 @@ AFRAME.registerComponent("shipfinder", {
     });
   },
   toggleData(event) {
-    const wasShipmentsMode = event.target.value === "shipments";
+    const wasShipmentsMode = event.target.value !== "shipments";
     event.target.innerText = wasShipmentsMode ? "Ships" : "Shipments";
     ships.forEach((ship) => {
       const shipName = ship.getAttribute("id");

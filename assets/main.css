@@ -125,15 +125,17 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  height: 36px;
+  height: 42px;
   background: #39414d;
   display: flex;
   align-items: center;
   color: #fff;
   font-family: "Montserrat", sans-serif;
   font-size: 18px;
-  padding: 6px 20px 6px 4px;
+  padding: 6px 16px 6px 8px;
   font-weight: 700;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .logo {
@@ -181,7 +183,7 @@ body {
 }
 
 .flight-types {
-  margin-left: 12px;
+  margin-left: auto;
   display: flex;
   max-width: 224px;
   width: 180px;
