@@ -238,7 +238,10 @@ AFRAME.registerComponent('shipfinder', {
     this.el.appendChild(text);
   },
   selectShip(event) {
-    console.log(event.target.value);
+    const selectedShip = event.target.value;
+    ships.forEach(ship => {
+      ship.object3D.visible = ship.getAttribute('id') === selectedShip || !selectedShip // if no ship selected, show all
+    });
   },
   handleScale(event) {
     // console.log('trying to scale', this.scaleFactor, event.detail.spreadChange, event.detail.startSpread)
