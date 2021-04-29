@@ -255,6 +255,7 @@ const createSelect = () => {
   const nullOption = document.createElement("option");
   nullOption.value = "";
   nullOption.innerText = "--Select a Ship--";
+  element.classList.add("ship-select");
   element.appendChild(nullOption);
   Object.keys(shipList).forEach((ship) => {
     const option = document.createElement("option");

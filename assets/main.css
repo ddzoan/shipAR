@@ -151,7 +151,7 @@ body {
 .footer {
   flex: 0 0 auto;
   position: relative;
-  height: 48px;
+  height: 42px;
   width: 100%;
   background: #0f2943;
   display: flex;
@@ -240,4 +240,8 @@ body {
 }
 .flight-types label:not(:last-child) {
   border-right: 1px solid #fff;
+}
+
+.ship-select {
+  margin-left: 12px;
 }
