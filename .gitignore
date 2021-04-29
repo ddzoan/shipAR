@@ -1,0 +1,6 @@
+# Keep the tmp dirs themselves
+**/.DS_Store
+
+# Node modules
+node_modules
+/**/node_modules

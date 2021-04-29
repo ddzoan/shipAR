@@ -11,16 +11,32 @@
     <script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
     <script src="draw-user-coordinates.js"></script>
     <script src="shipfinder.js"></script>
+    <link href="assets/main.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <a-scene id="#scene" vr-mode-ui="enabled: true" arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: true;'
-        gesture-detector renderer='antialias: true; alpha: true'>
-        <a-camera gps-projected-camera rotation-reader maxDistance="150000" position="0 30 120"></a-camera>
-        <a-entity shipfinder></a-entity>
-        <a-entity drawusercoordinates></a-entity>
-<!--        <a-entity demo></a-entity>-->
-    </a-scene>
+    <div class="container">
+        <div class="aframe">
+            <a-scene id="#scene" vr-mode-ui="enabled: true" arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: true;'
+                gesture-detector renderer='antialias: true; alpha: true'>
+            <a-camera gps-projected-camera rotation-reader look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' gps-camera='gpsMinDistance: 5' maxDistance="150000" position="0 30 120"></a-camera>
+            <a-entity shipfinder></a-entity>
+            <a-entity drawusercoordinates></a-entity>
+    <!--        <a-entity demo></a-entity>-->
+            </a-scene>
+        </div>
+        <div class="footer">
+            <div class="coordinate">LAT: <div id="lat"></div></div>
+            <div class="coordinate">LNG: <div id="lng"></div></div>
+            <div class="coordinate">ALT: <div id="alt"></div></div>
+        </div>
+    </div>
+    <div class="logo-wrapper">
+        <img class="logo" src="assets/logo-white.png" />
+         Flexeyes
+    </div>
 </body>
 
 </html>
