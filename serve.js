@@ -10,7 +10,7 @@ const fs = require('fs');
 const port = 8080;
 
 
-http.createServer(function (req, res) {
+http.createServer(function (req, res) {  
   const file = req.url.substring(1);
 
   try {
@@ -37,7 +37,7 @@ http.createServer(function (req, res) {
 
   // the assigned public url for your tunnel
   // i.e. https://abcdefgjhij.localtunnel.me
-  const url = tunnel.url + "/index.html";
+  const url = tunnel.url + "/step1-location.html";
   console.log('load app on your mobile device at', url);
   qrcode.generate(url);
 
