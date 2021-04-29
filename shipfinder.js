@@ -166,6 +166,7 @@ AFRAME.registerComponent("shipfinder", {
   },
   loadShips: function (longitude, latitude) {
     const scale = DEFAULT_SCALE;
+    const fake = window.location.hash;
     Object.values(shipList)
       .slice(0, -1)
       .forEach((ship) => {
@@ -182,8 +183,8 @@ AFRAME.registerComponent("shipfinder", {
           z: scale,
         });
         entity.setAttribute("gps-projected-entity-place", {
-          latitude: ship.geometry.coordinates[1],
-          longitude: ship.geometry.coordinates[0],
+          latitude: (fake ? (latitude - 37.787099): 0) + ship.geometry.coordinates[1],
+          longitude: (fake ? (longitude + 122.373562) : 0) + ship.geometry.coordinates[0]
         });
         this.el.appendChild(entity);
       });
