@@ -223,19 +223,19 @@ AFRAME.registerComponent('shipfinder', {
       });
 
     // for local demo only
-    const text = document.createElement('a-text');
-    ships.push(text);
-    text.setAttribute('look-at', '[gps-projected-camera]');
-    text.setAttribute('value', 'Hello\nThere');
-    text.setAttribute('id', 'Hello\nThere');
-    text.setAttribute('align', 'center');
-    text.setAttribute('color', 'red');
-    text.setAttribute('scale', {x: scale, y: scale, z: scale});
-    text.setAttribute('gps-projected-entity-place', {
-      latitude: latitude - 0.0209221,
-      longitude: longitude - 0.025173
-    });
-    this.el.appendChild(text);
+    // const text = document.createElement('a-text');
+    // ships.push(text);
+    // text.setAttribute('look-at', '[gps-projected-camera]');
+    // text.setAttribute('value', 'Hello\nThere');
+    // text.setAttribute('id', 'Hello\nThere');
+    // text.setAttribute('align', 'center');
+    // text.setAttribute('color', 'red');
+    // text.setAttribute('scale', {x: scale, y: scale, z: scale});
+    // text.setAttribute('gps-projected-entity-place', {
+    //   latitude: latitude - 0.0209221,
+    //   longitude: longitude - 0.025173
+    // });
+    // this.el.appendChild(text);
   },
   selectShip(event) {
     const selectedShip = event.target.value;
