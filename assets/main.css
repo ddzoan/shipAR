@@ -174,3 +174,8 @@ body {
 #alt {
   margin-left: 6px;
 }
+
+.a-enter-vr,
+.a-enter-ar {
+  visibility: hidden;
+}
